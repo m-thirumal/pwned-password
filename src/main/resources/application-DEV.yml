@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhot:5432/pwned-password
+    url: jdbc:postgresql://localhost:5432/pwned-password
     username: postgres
     password: thirumal
 server:
