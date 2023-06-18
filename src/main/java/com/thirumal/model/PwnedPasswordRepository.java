@@ -54,7 +54,7 @@ public class PwnedPasswordRepository {
                     .orElseThrow(()->new ResourceNotFoundException("Not able to generate primary key")).longValue();
         } catch (DataIntegrityViolationException e) {
            logger.error("Login user name insert exception: {}", e.getMessage());
-           throw new BadRequestException("Login user name is not added, Contact admin");
+           throw new BadRequestException("Pwned Password is not added, Contact admin");
         }       
 	}
 

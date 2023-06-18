@@ -2,9 +2,11 @@ package com.thirumal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * @author Thirumal
  */
+@EnableAsync
 @SpringBootApplication
 public class PwnedPasswordApplication {
 
