@@ -24,6 +24,7 @@ public class PwnedPassword implements Serializable {
 	private static final long serialVersionUID = 8254282040865699534L;
 
 	private Long pwnedPasswordId;
+	private String password; //Plain Password
 	private String hash;
 	private Integer prevalence;
 }

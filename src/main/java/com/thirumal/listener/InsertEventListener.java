@@ -37,4 +37,6 @@ public class InsertEventListener {
 		pwnedPasswordRepository.saveAll(pwnedPasswords);
 		logger.debug("Insertion is completed......");
     }
+	
+	
 }

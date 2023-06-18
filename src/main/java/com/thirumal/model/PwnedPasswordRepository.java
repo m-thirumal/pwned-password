@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -43,8 +42,8 @@ public class PwnedPasswordRepository {
 	private static final String PK                   = "pwned_password_id";
 	
 	private static final String CREATE               = "INSERT INTO public.pwned_password(hash, prevalence)	VALUES (?, ?)";
-	private static final String GET                  = "SELECT * FROM public.pwned_password;";
-	private static final String GETBY_HASH           = GET + "WHERE hash = ?";
+	private static final String GET                  = "SELECT * FROM public.pwned_password";
+	private static final String LISTBY_HASH           = GET + " WHERE hash = ?";
 	
 	public Long save(PwnedPassword pwnedPassword) {
 		KeyHolder holder = new GeneratedKeyHolder();
@@ -99,15 +98,11 @@ public class PwnedPasswordRepository {
 	}
 
 
-	public PwnedPassword findByhash(String hash) {
-		logger.debug("Finding contact by loginId {}", hash);
-		try {
-			return jdbcTemplate.queryForObject(GETBY_HASH, pwnedPasswordRowMapper, hash);
-		} catch (EmptyResultDataAccessException e) {
-			return null;
-		}
+	public List<PwnedPassword> findByhash(String hash) {
+		logger.debug("Finding password by hash {}", hash);
+		return jdbcTemplate.query(LISTBY_HASH, pwnedPasswordRowMapper, hash);
 	}
-	
+
 
 	RowMapper<PwnedPassword> pwnedPasswordRowMapper = (rs, rowNum) -> {
 
