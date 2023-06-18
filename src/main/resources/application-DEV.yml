@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhot:5432/pwned-password
+    username: postgres
+    password: thirumal
+server:
+  port: 8348
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://thirumal:thirumal@43.204.99.186:8761/eureka/
