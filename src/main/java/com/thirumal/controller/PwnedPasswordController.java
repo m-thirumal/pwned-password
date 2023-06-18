@@ -23,7 +23,7 @@ public class PwnedPasswordController {
 	@Autowired
 	private PwnedPasswordService pwnedPasswordService;
 	
-	@PostMapping("")
+	@PostMapping("/insert")
 	public boolean insert() {
 		return pwnedPasswordService.insert();
 	}
